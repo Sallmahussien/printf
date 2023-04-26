@@ -27,13 +27,14 @@ int _printf(const char *format, ...)
 	};
 	va_list list;
 	int char_num = 0;
+	char buffer[BUFFER_SIZE];
 
 	va_start(list, format);
 
 	if (format == NULL)
 		return (-1);
 
-	char_num = help_print(format, list, placeholders);
+	char_num = help_print(format, list, placeholders, buffer);
 	va_end(list);
 
 	return (char_num);
