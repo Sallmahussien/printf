@@ -12,6 +12,17 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"s", print_str},
 		{"%", print_percent},
+		{"d", print_int},
+		{"i", print_int},
+		{"b", print_binary},
+		{"o", print_octal},
+		{"u", print_unsigned},
+		{"S", print_str_hex},
+		{"x", print_hexa_lower},
+		{"X", print_hexa_upper},
+		{"p", print_ptr},
+		{"r", print_rev},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	va_list list;
