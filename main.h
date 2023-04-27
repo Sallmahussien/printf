@@ -44,7 +44,8 @@ typedef struct flag
 } flag_t;
 
 int _printf(const char *format, ...);
-int help_print(const char *format, va_list list, print_t placeholders[]);
+int help_print(const char *format, va_list list,
+	       print_t placeholders[], char *buffer);
 
 int print_char(va_list list, char buffer[], int buff_pos, int flag,
 		int length, int width);

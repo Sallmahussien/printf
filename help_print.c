@@ -5,11 +5,12 @@
  * @format: input format to be printed
  * @list: argument list
  * @placeholders: list of structs
+ * @buffer: buffer
  * Return: number of printed characters
  */
-int help_print(const char *format, va_list list, print_t placeholders[])
+int help_print(const char *format, va_list list,
+	       print_t placeholders[], char *buffer)
 {
-	char buffer[BUFFER_SIZE];
 	int buffer_pos = 0, ind, flags, length, width, i, j, char_num = 0;
 
 	for (i = 0; format && format[i]; i++)
@@ -29,9 +30,10 @@ int help_print(const char *format, va_list list, print_t placeholders[])
 			flags = get_flags(format + i + 1, &ind);
 			length = get_length(format + i + 1 + ind, &ind);
 			width = get_width(list, format + i + 1 + ind, &ind);
+			i += ind;
 			for (j = 0; placeholders[j].data_type; j++)
 			{
-				if (*(format + i + ind + 1) == *placeholders[j].data_type)
+				if (*(format + i + 1) == *placeholders[j].data_type)
 				{
 					buffer_pos += placeholders[j].func(list, buffer, buffer_pos, flags,
 							length, width);
